@@ -20,6 +20,7 @@ class Contract extends Model
         'end_date',
         'default_working_hours_start',
         'default_working_hours_end',
+        'default_working_hours',
         'default_working_days',
         'weekly_working_hours',
         'base_net_hourly_salary',

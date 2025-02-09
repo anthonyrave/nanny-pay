@@ -22,6 +22,7 @@ return new class extends Migration
             $table->date('end_date')->nullable();
             $table->time('default_working_hours_start');
             $table->time('default_working_hours_end');
+            $table->float('default_working_hours');
             $table->string('default_working_days');
             $table->float('weekly_working_hours');
             $table->float('base_net_hourly_salary')->nullable();
@@ -43,6 +44,15 @@ return new class extends Migration
             $table->id();
             $table->foreignId('contract_id')->constrained();
             $table->text('text')->nullable();
+        });
+
+        Schema::create('daily_specific_schedules', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('contract_id')->constrained();
+            $table->tinyInteger('week_day');
+            $table->time('working_hours_start');
+            $table->time('working_hours_end');
+            $table->float('working_hours');
         });
     }
 
