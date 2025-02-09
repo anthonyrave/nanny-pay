@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('address_line_1')->nullable();
             $table->string('address_line_2')->nullable();
             $table->string('postcode')->nullable();
-            $table->string('country')->nullable();
+            $table->string('city')->nullable();
         });
     }
 
@@ -28,7 +28,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn(['firstname', 'lastname', 'phone_number', 'address_line_1', 'address_line_2', 'postcode', 'country']);
+            $table->dropColumn(['firstname', 'lastname', 'phone_number', 'address_line_1', 'address_line_2', 'postcode', 'city']);
         });
     }
 };

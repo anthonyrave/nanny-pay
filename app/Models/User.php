@@ -28,7 +28,8 @@ class User extends Authenticatable
         'address_line_1',
         'address_line_2',
         'postcode',
-        'country',
+        'city',
+        'is_ghost',
     ];
 
     /**

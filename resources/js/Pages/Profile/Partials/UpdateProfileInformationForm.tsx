@@ -19,8 +19,10 @@ export default function UpdateProfileInformation({
 
   const { data, setData, patch, errors, processing, recentlySuccessful } =
     useForm({
-      name: user.name,
+      firstname: user.firstname,
+      lastname: user.lastname,
       email: user.email,
+      phone_number: user.phone_number,
     });
 
   const submit: FormEventHandler = (e) => {
@@ -43,19 +45,34 @@ export default function UpdateProfileInformation({
 
       <form onSubmit={submit} className="mt-6 space-y-6">
         <div>
-          <InputLabel htmlFor="name" value="Nom" />
+          <InputLabel htmlFor="firstname" value="Prénom" />
 
           <TextInput
-            id="name"
+            id="firstname"
             className="mt-1 block w-full"
-            value={data.name}
-            onChange={(e) => setData("name", e.target.value)}
+            value={data.firstname}
+            onChange={(e) => setData("firstname", e.target.value)}
             required
             isFocused
-            autoComplete="name"
+            autoComplete="firstname"
           />
 
-          <InputError className="mt-2" message={errors.name} />
+          <InputError className="mt-2" message={errors.firstname} />
+        </div>
+
+        <div>
+          <InputLabel htmlFor="lastname" value="Nom" />
+
+          <TextInput
+            id="lastname"
+            className="mt-1 block w-full"
+            value={data.lastname}
+            onChange={(e) => setData("lastname", e.target.value)}
+            required
+            autoComplete="lastname"
+          />
+
+          <InputError className="mt-2" message={errors.lastname} />
         </div>
 
         <div>
@@ -96,6 +113,21 @@ export default function UpdateProfileInformation({
           </div>
         )}
 
+        <div>
+          <InputLabel htmlFor="phone_number" value="Numéro de téléphone" />
+
+          <TextInput
+            id="phone-number"
+            type="tel"
+            className="mt-1 block w-full"
+            value={data.phone_number ?? ""}
+            onChange={(e) => setData("phone_number", e.target.value)}
+            autoComplete="phone_number"
+          />
+
+          <InputError className="mt-2" message={errors.phone_number} />
+        </div>
+
         <div className="flex items-center gap-4">
           <PrimaryButton disabled={processing}>Enregistrer</PrimaryButton>
 
@@ -106,7 +138,7 @@ export default function UpdateProfileInformation({
             leave="transition ease-in-out"
             leaveTo="opacity-0"
           >
-            <p className="text-sm text-gray-600">Saved.</p>
+            <p className="text-sm text-gray-600">Enregistré.</p>
           </Transition>
         </div>
       </form>

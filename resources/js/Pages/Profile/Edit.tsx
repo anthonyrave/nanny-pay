@@ -4,6 +4,7 @@ import DeleteUserForm from "./Partials/DeleteUserForm";
 import UpdatePasswordForm from "./Partials/UpdatePasswordForm";
 import UpdateProfileInformationForm from "./Partials/UpdateProfileInformationForm";
 import SidebarLayout from "@/Layouts/SidebarLayout";
+import UpdateAddressForm from "./Partials/UpdateAddressForm";
 
 export default function Edit({
   mustVerifyEmail,
@@ -19,6 +20,8 @@ export default function Edit({
           status={status}
           className="mb-12"
         />
+
+        <UpdateAddressForm className="mb-12" />
 
         <UpdatePasswordForm className="mb-12" />
 
