@@ -10,6 +10,12 @@ export interface User {
   address_line_2?: string;
   postcode?: string;
   city?: string;
+  contracts: Contract[];
+}
+
+export interface Contract {
+  child_firstname: string;
+  child_lastname: string;
 }
 
 export type PageProps<

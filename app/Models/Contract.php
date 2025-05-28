@@ -14,6 +14,10 @@ class Contract extends Model
     protected $fillable = [
         'employer_id',
         'employee_id',
+        'employee_firstname',
+        'employee_lastname',
+        'employee_email',
+        'employee_phone_number',
         'type',
         'case',
         'start_date',

@@ -1,8 +1,8 @@
-import Checkbox from "@/Components/Checkbox";
 import InputError from "@/Components/InputError";
-import InputLabel from "@/Components/InputLabel";
-import PrimaryButton from "@/Components/PrimaryButton";
-import TextInput from "@/Components/TextInput";
+import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import GuestLayout from "@/Layouts/GuestLayout";
 import { Head, Link, useForm } from "@inertiajs/react";
 import { FormEventHandler } from "react";
@@ -38,16 +38,16 @@ export default function Login({
 
       <form onSubmit={submit}>
         <div>
-          <InputLabel htmlFor="email" value="Email" />
+          <Label htmlFor="email">Email</Label>
 
-          <TextInput
+          <Input
             id="email"
             type="email"
             name="email"
             value={data.email}
             className="mt-1 block w-full"
             autoComplete="username"
-            isFocused={true}
+            autoFocus={true}
             onChange={(e) => setData("email", e.target.value)}
           />
 
@@ -56,7 +56,7 @@ export default function Login({
 
         <div className="mt-4">
           <div className="flex justify-between">
-            <InputLabel htmlFor="password" value="Mot de passe" />
+            <Label htmlFor="password">Mot de passe</Label>
 
             {canResetPassword && (
               <Link
@@ -68,7 +68,7 @@ export default function Login({
             )}
           </div>
 
-          <TextInput
+          <Input
             id="password"
             type="password"
             name="password"
@@ -86,8 +86,8 @@ export default function Login({
             <Checkbox
               name="remember"
               checked={data.remember}
-              onChange={(e) =>
-                setData("remember", (e.target.checked || false) as false)
+              onCheckedChange={(e) =>
+                setData("remember", (e.valueOf() || false) as false)
               }
             />
             <span className="ms-2 text-sm text-gray-600">
@@ -104,9 +104,9 @@ export default function Login({
             Pas encore de compte ?
           </Link>
 
-          <PrimaryButton className="ms-4" disabled={processing}>
+          <Button className="ms-4" disabled={processing}>
             Connexion
-          </PrimaryButton>
+          </Button>
         </div>
       </form>
     </GuestLayout>

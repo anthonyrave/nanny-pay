@@ -18,7 +18,7 @@ export default function UpdateAddress({
       address_line_1: user.address_line_1 ?? "",
       address_line_2: user.address_line_2 ?? "",
       postcode: user.postcode ?? "",
-      city: user.city ?? "",
+      country: user.city ?? "",
     });
 
   const submit: FormEventHandler = (e) => {
@@ -61,6 +61,7 @@ export default function UpdateAddress({
             className="mt-1 block w-full"
             value={data.address_line_2}
             onChange={(e) => setData("address_line_2", e.target.value)}
+            required
           />
 
           <InputError className="mt-2" message={errors.address_line_2} />
