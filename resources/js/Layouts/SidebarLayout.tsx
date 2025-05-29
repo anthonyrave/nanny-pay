@@ -1,5 +1,6 @@
 import { AppSidebar } from "@/Components/AppSidebar";
 import { NavUser } from "@/Components/NavUser";
+import ThemeToggle from "@/Components/ThemeToggle";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -47,7 +48,8 @@ export default function Authenticated({
             </Breadcrumb>
           </div>
 
-          <div className="w-64">
+          <div className="flex items-center gap-2 w-72">
+            <ThemeToggle />
             <NavUser />
           </div>
         </header>

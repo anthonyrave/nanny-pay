@@ -11,6 +11,7 @@ import {
 import { Head } from "@inertiajs/react";
 import { fr } from "date-fns/locale";
 import React, { useEffect } from "react";
+import { usePage } from "@inertiajs/react";
 
 export default function Dashboard() {
   const serviceDailyRate: number = 4;
@@ -58,7 +59,7 @@ export default function Dashboard() {
   }, []);
 
   return (
-    <SidebarLayout>
+    <SidebarLayout user={usePage().props.auth.user}>
       <Head title="Pay" />
 
       <div className="p-6">
@@ -69,8 +70,8 @@ export default function Dashboard() {
         <div className="mb-2">
           <Label htmlFor="hours-rate">Salaire horaire de base (en euros)</Label>
           <Input
-            className="w-80"
             id="service-daily-rate"
+            className="w-80"
             type="text"
             value={hourlyWage}
             disabled
@@ -81,8 +82,8 @@ export default function Dashboard() {
             Indemnité d'entretien par jour travaillé (en euros)
           </Label>
           <Input
-            className="w-80"
             id="service-daily-rate"
+            className="w-80"
             type="text"
             value={serviceDailyRate}
             disabled
