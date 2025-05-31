@@ -1,7 +1,7 @@
 import InputError from "@/Components/InputError";
 import InputLabel from "@/Components/InputLabel";
-import PrimaryButton from "@/Components/PrimaryButton";
 import TextInput from "@/Components/TextInput";
+import { Button } from "@/components/ui/button";
 import { PageProps } from "@/types";
 import { Transition } from "@headlessui/react";
 import { Link, useForm, usePage } from "@inertiajs/react";
@@ -35,11 +35,11 @@ export default function UpdateProfileInformation({
   return (
     <section className={className}>
       <header>
-        <h2 className="text-lg font-medium text-gray-900">
+        <h2 className="text-lg font-medium text-foreground">
           Informations personnelles
         </h2>
 
-        <p className="mt-1 text-sm text-gray-600">
+        <p className="mt-1 text-sm text-muted-foreground">
           Modifiez ou complétez vos informations personnelles.
         </p>
       </header>
@@ -94,13 +94,13 @@ export default function UpdateProfileInformation({
 
         {mustVerifyEmail && user.email_verified_at === null && (
           <div>
-            <p className="mt-2 text-sm text-gray-800">
+            <p className="mt-2 text-sm text-foreground">
               Your email address is unverified.
               <Link
                 href={route("verification.send")}
                 method="post"
                 as="button"
-                className="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                className="rounded-md text-sm text-muted-foreground underline underline-offset-4"
               >
                 Click here to re-send the verification email.
               </Link>
@@ -130,7 +130,7 @@ export default function UpdateProfileInformation({
         </div>
 
         <div className="flex items-center gap-4">
-          <PrimaryButton disabled={processing}>Enregistrer</PrimaryButton>
+          <Button disabled={processing}>Enregistrer</Button>
 
           <Transition
             show={recentlySuccessful}
@@ -139,7 +139,7 @@ export default function UpdateProfileInformation({
             leave="transition ease-in-out"
             leaveTo="opacity-0"
           >
-            <p className="text-sm text-gray-600">Enregistré.</p>
+            <p className="text-sm text-muted-foreground">Enregistré.</p>
           </Transition>
         </div>
       </form>

@@ -1,7 +1,7 @@
 import InputError from "@/Components/InputError";
 import InputLabel from "@/Components/InputLabel";
-import PrimaryButton from "@/Components/PrimaryButton";
 import TextInput from "@/Components/TextInput";
+import { Button } from "@/components/ui/button";
 import { Transition } from "@headlessui/react";
 import { useForm } from "@inertiajs/react";
 import { FormEventHandler, useRef } from "react";
@@ -44,11 +44,11 @@ export default function UpdatePasswordForm({
   return (
     <section className={className}>
       <header>
-        <h2 className="text-lg font-medium text-gray-900">
+        <h2 className="text-lg font-medium text-foreground">
           Modifier votre mot de passe
         </h2>
 
-        <p className="mt-1 text-sm text-gray-600">
+        <p className="mt-1 text-sm text-muted-foreground">
           Veuillez utiliser un mot de passe fort pour sécuriser votre compte.
         </p>
       </header>
@@ -102,7 +102,7 @@ export default function UpdatePasswordForm({
         </div>
 
         <div className="flex items-center gap-4">
-          <PrimaryButton disabled={processing}>Enregistrer</PrimaryButton>
+          <Button disabled={processing}>Enregistrer</Button>
 
           <Transition
             show={recentlySuccessful}

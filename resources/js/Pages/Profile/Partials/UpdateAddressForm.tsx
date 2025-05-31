@@ -1,11 +1,11 @@
 import InputError from "@/Components/InputError";
 import InputLabel from "@/Components/InputLabel";
-import PrimaryButton from "@/Components/PrimaryButton";
 import TextInput from "@/Components/TextInput";
 import { PageProps } from "@/types";
 import { Transition } from "@headlessui/react";
 import { useForm, usePage } from "@inertiajs/react";
 import { FormEventHandler } from "react";
+import { Button } from "@/components/ui/button";
 
 export default function UpdateAddress({
   className = "",
@@ -32,9 +32,9 @@ export default function UpdateAddress({
   return (
     <section className={className}>
       <header>
-        <h2 className="text-lg font-medium text-gray-900">Adresse</h2>
+        <h2 className="text-lg font-medium text-foreground">Adresse</h2>
 
-        <p className="mt-1 text-sm text-gray-600">
+        <p className="mt-1 text-sm text-muted-foreground">
           Modifiez ou complétez votre addresse.
         </p>
       </header>
@@ -98,7 +98,7 @@ export default function UpdateAddress({
         </div>
 
         <div className="flex items-center gap-4">
-          <PrimaryButton disabled={processing}>Enregistrer</PrimaryButton>
+          <Button disabled={processing}>Enregistrer</Button>
 
           <Transition
             show={recentlySuccessful}
@@ -107,7 +107,7 @@ export default function UpdateAddress({
             leave="transition ease-in-out"
             leaveTo="opacity-0"
           >
-            <p className="text-sm text-gray-600">Enregistré.</p>
+            <p className="text-sm text-muted-foreground">Enregistré.</p>
           </Transition>
         </div>
       </form>
