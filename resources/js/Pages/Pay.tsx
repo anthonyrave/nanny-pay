@@ -11,7 +11,6 @@ import {
 import { Head } from "@inertiajs/react";
 import { fr } from "date-fns/locale";
 import React, { useEffect } from "react";
-import { usePage } from "@inertiajs/react";
 
 export default function Dashboard() {
   const serviceDailyRate: number = 4;
@@ -59,7 +58,7 @@ export default function Dashboard() {
   }, []);
 
   return (
-    <SidebarLayout user={usePage().props.auth.user}>
+    <SidebarLayout>
       <Head title="Pay" />
 
       <div className="p-6">

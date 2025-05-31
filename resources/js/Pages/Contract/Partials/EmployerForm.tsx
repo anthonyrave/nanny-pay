@@ -23,9 +23,7 @@ const EmployerForm = forwardRef(
     return (
       <section className={className}>
         <header>
-          <h2 className="text-lg font-medium text-gray-900">
-            Particulier employeur
-          </h2>
+          <h2 className="text-lg font-medium">Particulier employeur</h2>
         </header>
         <form className="mt-4 space-y-4">
           <div className="flex gap-2">

@@ -1,6 +1,6 @@
 import { Head } from "@inertiajs/react";
 import RegistrationLayout from "@/Layouts/RegistrationLayout";
-import { useRef, useState } from "react";
+import { MutableRefObject, useRef, useState } from "react";
 import { PartiesStep } from "./Steps/PartiesStep";
 import { Button } from "@/components/ui/button";
 
@@ -8,7 +8,7 @@ export default function Create() {
   const steps: React.ElementType[] = [PartiesStep];
   const [activeStep, setActiveStep] = useState(0);
 
-  const stepRefs = steps.map(() => useRef());
+  const stepRefs = steps.map((): MutableRefObject<any> => useRef());
 
   const prevButton = () => {
     if (activeStep !== 0) {
@@ -20,7 +20,7 @@ export default function Create() {
     }
   };
 
-  const submitStep = () => {
+  const submitStep = (): void => {
     if (stepRefs[activeStep].current) {
       stepRefs[activeStep].current.submit();
     }
@@ -42,14 +42,14 @@ export default function Create() {
     <RegistrationLayout>
       <Head title="Créer un nouveau contrat" />
 
-      <h1 className="text-3xl leading-tight text-gray-900">
+      <h1 className="text-3xl leading-tight text-foreground">
         Créer un nouveau contrat{" "}
         <span className="text-lg">
           ({activeStep + 1}/{steps.length})
         </span>
       </h1>
 
-      <div className="mt-6 w-full overflow-hidden bg-white px-6 py-4 max-w-xl shadow-md sm:rounded-lg">
+      <div className="mt-6 w-full overflow-hidden bg-card text-card-foreground px-6 py-4 max-w-xl shadow-md sm:rounded-lg">
         {steps.map((Step, index) => {
           if (activeStep === index) {
             return <Step key={index} ref={stepRefs[index]} />;

@@ -14,6 +14,7 @@ export interface User {
 }
 
 export interface Contract {
+  id: number;
   child_firstname: string;
   child_lastname: string;
 }

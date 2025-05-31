@@ -2,9 +2,10 @@ import { forwardRef, useImperativeHandle, useRef } from "react";
 import { EmployeeForm } from "../Partials/EmployeeForm";
 import { EmployerForm } from "../Partials/EmployerForm";
 import { useForm, usePage } from "@inertiajs/react";
+import { PageProps } from "@/types";
 
 const PartiesStep = forwardRef((props, ref) => {
-  const user = usePage().props.auth.user;
+  const user = usePage<PageProps>().props.auth.user;
 
   const employerFormRef = useRef();
   const employeeFormRef = useRef();

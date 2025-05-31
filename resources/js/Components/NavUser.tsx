@@ -17,9 +17,10 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar";
 import { Link, usePage } from "@inertiajs/react";
+import { PageProps } from "@/types";
 
 export function NavUser() {
-  const user = usePage().props.auth.user;
+  const user = usePage<PageProps>().props.auth.user;
   const { isMobile } = useSidebar();
 
   const getInitials = (): string => {

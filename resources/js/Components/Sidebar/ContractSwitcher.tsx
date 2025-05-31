@@ -17,8 +17,10 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar";
 import { usePage } from "@inertiajs/react";
+import { Contract, PageProps } from "@/types";
+
 export function ContractSwitcher() {
-  const user = usePage().props.auth.user;
+  const user = usePage<PageProps>().props.auth.user;
 
   const { isMobile } = useSidebar();
   const [activeContract, setActiveContract] = React.useState(user.contracts[0]);
@@ -54,7 +56,7 @@ export function ContractSwitcher() {
             <DropdownMenuLabel className="text-xs text-muted-foreground">
               Contracts
             </DropdownMenuLabel>
-            {user.contracts.map((contract, index) => (
+            {user.contracts.map((contract: Contract, index) => (
               <DropdownMenuItem
                 key={contract.id}
                 onClick={() => setActiveContract(contract)}

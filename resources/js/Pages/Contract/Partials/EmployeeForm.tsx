@@ -11,7 +11,12 @@ const EmployeeForm = forwardRef(
       setData = () => {},
     }: {
       className?: string;
-      data: {};
+      data: {
+        employee_firstname?: string;
+        employee_lastname?: string;
+        employee_email?: string;
+        employee_phone_number?: string;
+      };
       setData: CallableFunction;
     },
     ref,
@@ -19,9 +24,7 @@ const EmployeeForm = forwardRef(
     return (
       <section className={className}>
         <header>
-          <h2 className="text-lg font-medium text-gray-900">
-            Assistant maternel
-          </h2>
+          <h2 className="text-lg font-medium">Assistant maternel</h2>
         </header>
 
         <form className="mt-4 space-y-4">
@@ -34,6 +37,7 @@ const EmployeeForm = forwardRef(
                 className="mt-1 block w-full"
                 value={data.employee_firstname}
                 onChange={(e) => setData("employee_firstname", e.target.value)}
+                required
               />
             </div>
             <div className="w-full">
@@ -44,6 +48,7 @@ const EmployeeForm = forwardRef(
                 className="mt-1 block w-full"
                 value={data.employee_lastname}
                 onChange={(e) => setData("employee_lastname", e.target.value)}
+                required
               />
             </div>
           </div>
@@ -57,6 +62,7 @@ const EmployeeForm = forwardRef(
               className="mt-1 block w-full"
               value={data.employee_email}
               onChange={(e) => setData("employee_email", e.target.value)}
+              required
             />
           </div>
 

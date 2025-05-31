@@ -2,6 +2,7 @@ import InputError from "@/Components/InputError";
 import InputLabel from "@/Components/InputLabel";
 import PrimaryButton from "@/Components/PrimaryButton";
 import TextInput from "@/Components/TextInput";
+import { PageProps } from "@/types";
 import { Transition } from "@headlessui/react";
 import { useForm, usePage } from "@inertiajs/react";
 import { FormEventHandler } from "react";
@@ -11,13 +12,14 @@ export default function UpdateAddress({
 }: {
   className?: string;
 }) {
-  const user = usePage().props.auth.user;
+  const user = usePage<PageProps>().props.auth.user;
 
   const { data, setData, patch, errors, processing, recentlySuccessful } =
     useForm({
       address_line_1: user.address_line_1 ?? "",
       address_line_2: user.address_line_2 ?? "",
       postcode: user.postcode ?? "",
+      city: user.city ?? "",
       country: user.city ?? "",
     });
 

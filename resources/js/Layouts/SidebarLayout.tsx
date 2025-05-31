@@ -15,6 +15,7 @@ import {
   SidebarInset,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
+import { PageProps } from "@/types";
 import { usePage } from "@inertiajs/react";
 import { PropsWithChildren, ReactNode, useState } from "react";
 
@@ -22,7 +23,7 @@ export default function Authenticated({
   header,
   children,
 }: PropsWithChildren<{ header?: ReactNode }>) {
-  const user = usePage().props.auth.user;
+  const user = usePage<PageProps>().props.auth.user;
 
   const [showingNavigationDropdown, setShowingNavigationDropdown] =
     useState(false);
