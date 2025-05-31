@@ -61,7 +61,7 @@ export default function Login({
             {canResetPassword && (
               <Link
                 href={route("password.request")}
-                className="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                className="rounded-md text-sm text-muted-foreground underline underline-offset-4"
               >
                 Mot de passe oublié ?
               </Link>
@@ -90,7 +90,7 @@ export default function Login({
                 setData("remember", (e.valueOf() || false) as false)
               }
             />
-            <span className="ms-2 text-sm text-gray-600">
+            <span className="ms-2 text-sm text-muted-foreground">
               Se souvenir de moi
             </span>
           </label>
@@ -99,7 +99,7 @@ export default function Login({
         <div className="mt-4 flex items-center justify-end">
           <Link
             href={route("register")}
-            className="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+            className="rounded-md text-sm text-muted-foreground underline underline-offset-4"
           >
             Pas encore de compte ?
           </Link>
