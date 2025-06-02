@@ -2,6 +2,7 @@ import { Input } from "@/components/ui/input";
 import PhoneInput from "@/Components/Form/PhoneInput";
 import { Label } from "@/components/ui/label";
 import { forwardRef } from "react";
+import { FormError } from "@/Components/Form/FormError";
 
 const EmployeeForm = forwardRef(
   (
@@ -36,56 +37,89 @@ const EmployeeForm = forwardRef(
 
         <form className="mt-4 space-y-4">
           <div className="flex gap-2">
-            <div className="w-full">
-              <Label htmlFor="firstname">Prénom</Label>
+            <div className="w-full grid gap-2">
+              <Label
+                htmlFor="firstname"
+                className="data-[error=true]:text-destructive"
+                data-error={!!errors.employee_firstname}
+              >
+                Prénom
+              </Label>
 
               <Input
                 id="employee-firstname"
-                className="mt-1 block w-full"
+                className="block w-full aria-[invalid=true]:border-destructive"
                 value={data.employee_firstname}
                 onChange={(e) => setData("employee_firstname", e.target.value)}
+                aria-invalid={!!errors.employee_firstname}
                 required
               />
-              <span>{errors.employee_firstname}</span>
+
+              <FormError value={errors.employee_firstname} />
             </div>
-            <div className="w-full">
-              <Label htmlFor="employee-lastname">Nom</Label>
+            <div className="w-full grid gap-2">
+              <Label
+                htmlFor="employee-lastname"
+                className="data-[error=true]:text-destructive"
+                data-error={!!errors.employee_lastname}
+              >
+                Nom
+              </Label>
 
               <Input
                 id="employee-lastname"
-                className="mt-1 block w-full"
+                className="block w-full aria-[invalid=true]:border-destructive"
                 value={data.employee_lastname}
                 onChange={(e) => setData("employee_lastname", e.target.value)}
+                aria-invalid={!!errors.employee_lastname}
                 required
               />
-              <span>{errors.employee_lastname}</span>
+
+              <FormError value={errors.employee_lastname} />
             </div>
           </div>
 
-          <div>
-            <Label htmlFor="employee-email">Email</Label>
+          <div className="grid gap-2">
+            <Label
+              htmlFor="employee-email"
+              className="data-[error=true]:text-destructive"
+              data-error={!!errors.employee_email}
+            >
+              Email
+            </Label>
 
             <Input
               id="employee-email"
               type="email"
-              className="mt-1 block w-full"
+              className="block w-full aria-[invalid=true]:border-destructive"
               value={data.employee_email}
               onChange={(e) => setData("employee_email", e.target.value)}
+              aria-invalid={!!errors.employee_email}
               required
             />
-            <span>{errors.employee_email}</span>
+
+            <FormError value={errors.employee_email} />
           </div>
 
-          <div>
-            <Label htmlFor="employee-phone-number">Numéro de téléphone</Label>
+          <div className="grid gap-2">
+            <Label
+              htmlFor="employee-phone-number"
+              className="data-[error=true]:text-destructive"
+              data-error={!!errors.employee_phone_number}
+            >
+              Numéro de téléphone
+            </Label>
 
             <PhoneInput
               id="employee-phone-number"
-              className="mt-1 block w-full"
+              className="block w-full aria-[invalid=true]:border-destructive"
               value={data.employee_phone_number}
               onChange={(e) => setData("employee_phone_number", e.target.value)}
+              aria-invalid={!!errors.employee_phone_number}
+              required
             />
-            <span>{errors.employee_phone_number}</span>
+
+            <FormError value={errors.employee_phone_number} />
           </div>
         </form>
       </section>

@@ -1,6 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+    @custom-variant aria-invalid (&[aria-invalid="true"]);
+}
+
 @layer base {
     :root {
         --radius: 0.625rem;

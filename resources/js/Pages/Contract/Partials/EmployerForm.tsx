@@ -1,3 +1,4 @@
+import { FormError } from "@/Components/Form/FormError";
 import PhoneInput from "@/Components/Form/PhoneInput";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -39,53 +40,83 @@ const EmployerForm = forwardRef(
         </header>
         <form className="mt-4 space-y-4">
           <div className="flex gap-2">
-            <div className="w-full">
-              <Label htmlFor="firstname">Prénom</Label>
+            <div className="w-full grid gap-2">
+              <Label
+                htmlFor="firstname"
+                className="data-[error=true]:text-destructive"
+                data-error={!!errors.firstname}
+              >
+                Prénom
+              </Label>
 
               <Input
                 id="firstname"
-                className="mt-1 block w-full"
+                className="block w-full aria-[invalid=true]:border-destructive"
                 value={data.firstname}
+                aria-invalid={!!errors.firstname}
                 disabled
               />
-              <span>{errors.firstname}</span>
+
+              <FormError value={errors.firstname} />
             </div>
 
-            <div className="w-full">
-              <Label htmlFor="lastname">Nom</Label>
+            <div className="w-full grid gap-2">
+              <Label
+                htmlFor="lastname"
+                className="data-[error=true]:text-destructive"
+                data-error={!!errors.lastname}
+              >
+                Nom
+              </Label>
 
               <Input
                 id="lastname"
-                className="mt-1 block w-full"
+                className="block w-full aria-[invalid=true]:border-destructive"
                 value={data.lastname}
+                aria-invalid={!!errors.lastname}
                 disabled
               />
-              <span>{errors.lastname}</span>
+              <FormError value={errors.lastname} />
             </div>
           </div>
-          <div>
-            <Label htmlFor="email">Email</Label>
+
+          <div className="grid gap-2">
+            <Label
+              htmlFor="email"
+              className="data-[error=true]:text-destructive"
+              data-error={!!errors.email}
+            >
+              Email
+            </Label>
 
             <Input
               id="email"
               type="email"
-              className="mt-1 block w-full"
+              className="block w-full aria-[invalid=true]:border-destructive"
               value={data.email}
+              aria-invalid={!!errors.email}
               disabled
             />
-            <span>{errors.email}</span>
+            <FormError value={errors.email} />
           </div>
 
-          <div>
-            <Label htmlFor="phone_number">Numéro de téléphone</Label>
+          <div className="grid gap-2">
+            <Label
+              htmlFor="phone_number"
+              className="data-[error=true]:text-destructive"
+              data-error={!!errors.phone_number}
+            >
+              Numéro de téléphone
+            </Label>
 
             <PhoneInput
               id="phone_number"
-              className="mt-1 block w-full"
+              className="block w-full aria-[invalid=true]:border-destructive"
               value={data.phone_number}
               onChange={(e) => setData("phone_number", e.target.value)}
+              aria-invalid={!!errors.phone_number}
             />
-            <span>{errors.phone_number}</span>
+            <FormError value={errors.phone_number} />
           </div>
         </form>
       </section>
