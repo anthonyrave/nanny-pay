@@ -9,6 +9,7 @@ const EmployeeForm = forwardRef(
       className = "",
       data = {},
       setData = () => {},
+      errors = {},
     }: {
       className?: string;
       data: {
@@ -18,6 +19,12 @@ const EmployeeForm = forwardRef(
         employee_phone_number?: string;
       };
       setData: CallableFunction;
+      errors: {
+        employee_firstname?: string;
+        employee_lastname?: string;
+        employee_email?: string;
+        employee_phone_number?: string;
+      };
     },
     ref,
   ) => {
@@ -39,6 +46,7 @@ const EmployeeForm = forwardRef(
                 onChange={(e) => setData("employee_firstname", e.target.value)}
                 required
               />
+              <span>{errors.employee_firstname}</span>
             </div>
             <div className="w-full">
               <Label htmlFor="employee-lastname">Nom</Label>
@@ -50,6 +58,7 @@ const EmployeeForm = forwardRef(
                 onChange={(e) => setData("employee_lastname", e.target.value)}
                 required
               />
+              <span>{errors.employee_lastname}</span>
             </div>
           </div>
 
@@ -64,6 +73,7 @@ const EmployeeForm = forwardRef(
               onChange={(e) => setData("employee_email", e.target.value)}
               required
             />
+            <span>{errors.employee_email}</span>
           </div>
 
           <div>
@@ -75,6 +85,7 @@ const EmployeeForm = forwardRef(
               value={data.employee_phone_number}
               onChange={(e) => setData("employee_phone_number", e.target.value)}
             />
+            <span>{errors.employee_phone_number}</span>
           </div>
         </form>
       </section>

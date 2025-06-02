@@ -17,7 +17,7 @@ class ContractPartiesCreateRequest extends FormRequest
         return [
             'firstname' => ['required', 'string', 'max:255'],
             'lastname' => ['required', 'string', 'max:255'],
-            'phone_number' => ['nullable', 'phone:FR'],
+            'phone_number' => ['required', 'phone:FR', 'max:255'],
             'email' => [
                 'required',
                 'string',

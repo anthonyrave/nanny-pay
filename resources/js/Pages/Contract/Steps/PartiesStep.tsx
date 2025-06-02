@@ -34,7 +34,7 @@ const PartiesStep = forwardRef((props, ref) => {
         ref={employerFormRef}
         data={data}
         setData={setData}
-        // errors={errors}
+        errors={errors}
         // processing={processing}
         // recentlySuccessful={recentlySuccessful}
       />
@@ -42,7 +42,7 @@ const PartiesStep = forwardRef((props, ref) => {
         ref={employeeFormRef}
         data={data}
         setData={setData}
-        // errors={errors}
+        errors={errors}
         // processing={processing}
         // recentlySuccessful={recentlySuccessful}
         className="mt-8 mb-4"

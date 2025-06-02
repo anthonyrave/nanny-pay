@@ -25,16 +25,15 @@ export default function Create() {
       stepRefs[activeStep].current.submit();
     }
 
-    setActiveStep((s) => s + 1);
+    // setActiveStep((s) => s + 1);
   };
 
   const submitButton = () => {
     if (activeStep === steps.length - 1) {
       return <Button onClick={submitStep}>Valider</Button>;
     } else {
-      return (
-        <Button onClick={() => setActiveStep((s) => s + 1)}>Suivant</Button>
-      );
+      /* <Button onClick={() => setActiveStep((s) => s + 1)}>Suivant</Button> */
+      return <Button onClick={submitStep}>Suivant</Button>;
     }
   };
 
