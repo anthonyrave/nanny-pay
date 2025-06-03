@@ -16,7 +16,9 @@ import { ContractSwitcher } from "./Sidebar/ContractSwitcher";
 export function AppSidebar() {
   return (
     <Sidebar variant="inset">
-      <SidebarHeader>{/* <ContractSwitcher /> */}</SidebarHeader>
+      <SidebarHeader>
+        <ContractSwitcher />
+      </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel>Contrat</SidebarGroupLabel>

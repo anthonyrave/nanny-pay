@@ -23,7 +23,8 @@ export function ContractSwitcher() {
   const user = usePage<PageProps>().props.auth.user;
 
   const { isMobile } = useSidebar();
-  const [activeContract, setActiveContract] = React.useState(user.contracts[0]);
+  // const [activeContract, setActiveContract] = React.useState(user.contracts[0]);
+
   return (
     <SidebarMenu>
       <SidebarMenuItem>
@@ -38,10 +39,12 @@ export function ContractSwitcher() {
               </div>
               <div className="grid flex-1 text-left text-sm leading-tight">
                 <span className="truncate font-semibold">
-                  {activeContract.child_firstname}
+                  {/* {activeContract.child_firstname} */}
+                  firstname
                 </span>
                 <span className="truncate text-xs">
-                  {activeContract.child_lastname}
+                  {/* {activeContract.child_lastname} */}
+                  lastname
                 </span>
               </div>
               <ChevronsUpDown className="ml-auto" />
@@ -57,23 +60,22 @@ export function ContractSwitcher() {
               Contracts
             </DropdownMenuLabel>
             {user.contracts.map((contract: Contract, index) => (
-              <DropdownMenuItem
-                key={contract.id}
-                onClick={() => setActiveContract(contract)}
-                className="gap-2 p-2"
-              >
-                {contract.child_firstname}
+              <DropdownMenuItem key={contract.id} className="gap-2 p-2">
+                {/* onClick={() => setActiveContract(contract)} */}
+                {contract.employee_firstname}
                 <DropdownMenuShortcut>⌘{index + 1}</DropdownMenuShortcut>
               </DropdownMenuItem>
             ))}
             <DropdownMenuSeparator />
-            <DropdownMenuItem className="gap-2 p-2">
-              <div className="flex size-6 items-center justify-center rounded-md border bg-background">
-                <Plus className="size-4" />
-              </div>
-              <div className="font-medium text-muted-foreground">
-                Add contract
-              </div>
+            <DropdownMenuItem asChild className="gap-2 p-2">
+              <a href={route("contracts.parties.create")}>
+                <div className="flex size-6 items-center justify-center rounded-md border bg-background">
+                  <Plus className="size-4" />
+                </div>
+                <div className="font-medium text-muted-foreground">
+                  Add contract
+                </div>
+              </a>
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

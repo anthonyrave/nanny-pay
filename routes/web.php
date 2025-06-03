@@ -30,13 +30,27 @@ Route::get('/test', function () {
 })->middleware(['auth', 'verified'])->name('test');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::patch('/profile/address', [AddressController::class, 'update'])->name('profile.address.update');
+    Route::get('/profile', [ProfileController::class, 'edit'])
+        ->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])
+        ->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])
+        ->name('profile.destroy');
+    Route::patch('/profile/address', [AddressController::class, 'update'])
+        ->name('profile.address.update');
 
-    Route::get('/contracts/create', [ContractController::class, 'create'])->name('contracts.create');
-    Route::post('/contracts/create/parties', [ContractPartiesController::class, 'store'])->name('contract.create.parties');
+    Route::get('/contracts/create', [ContractController::class, 'create'])
+        ->name('contracts.create');
+
+    Route::get('/contracts/create/parties', [ContractPartiesController::class, 'create'])
+        ->name('contracts.parties.create');
+    Route::post('/contracts/create/parties', [ContractPartiesController::class, 'store'])
+        ->name('contracts.parties.store');
+    Route::get('/contracts/{id}/update/parties', [ContractPartiesController::class, 'update'])
+        ->name('contracts.parties.update');
+
+    Route::get('/contracts/create/start-and-place', [ContractPartiesController::class, 'create'])
+        ->name('contracts.start-and-place.create');
 });
 
 require __DIR__.'/auth.php';
