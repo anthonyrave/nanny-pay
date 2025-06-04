@@ -1,11 +1,10 @@
-import { Head, useForm, usePage } from "@inertiajs/react";
-import RegistrationLayout from "@/Layouts/RegistrationLayout";
-import { Button } from "@/components/ui/button";
+import { useForm, usePage } from "@inertiajs/react";
 import { EmployerForm } from "../Partials/EmployerForm";
 import { EmployeeForm } from "../Partials/EmployeeForm";
 import { PageProps } from "@/types";
 import ContractCreationLayout from "@/Layouts/ContractCreationLayout";
-import React from "react";
+import { useContext } from "react";
+import { SubmitContext } from "@/lib/submit-context";
 
 export default function Form({
   stepIndex,
@@ -17,7 +16,7 @@ export default function Form({
   prevStep?: string;
 }) {
   const user = usePage<PageProps>().props.auth.user;
-  const { step } = React.useContext(submitContext);
+  const { formRef } = useContext(SubmitContext);
 
   const { data, setData, post, errors, processing, recentlySuccessful } =
     useForm({
@@ -42,21 +41,23 @@ export default function Form({
       prevStep={prevStep}
     >
       <div className="mt-6 w-full overflow-hidden bg-card text-card-foreground px-6 py-4 max-w-xl shadow-md sm:rounded-lg">
-        <EmployerForm
-          data={data}
-          setData={setData}
-          errors={errors}
-          // processing={processing}
-          // recentlySuccessful={recentlySuccessful}
-        />
-        <EmployeeForm
-          data={data}
-          setData={setData}
-          errors={errors}
-          // processing={processing}
-          // recentlySuccessful={recentlySuccessful}
-          className="mt-8 mb-4"
-        />
+        <form ref={formRef} onSubmit={submit}>
+          <EmployerForm
+            data={data}
+            setData={setData}
+            errors={errors}
+            // processing={processing}
+            // recentlySuccessful={recentlySuccessful}
+          />
+          <EmployeeForm
+            data={data}
+            setData={setData}
+            errors={errors}
+            // processing={processing}
+            // recentlySuccessful={recentlySuccessful}
+            className="mt-8 mb-4"
+          />
+        </form>
       </div>
     </ContractCreationLayout>
   );

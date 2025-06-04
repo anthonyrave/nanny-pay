@@ -19,15 +19,15 @@ class ContractPartiesController extends Controller
         $currentStepIndex = array_search($request->route()->getName(), $creationSteps);
 
         return Inertia::render(
-            'Contract/Parties/Create',
+            'Contract/Parties/Form',
             $this->getProps($request)
         );
     }
 
-    public function update(Contract $contract, Request $request): Response
+    public function edit(Contract $contract, Request $request): Response
     {
         return Inertia::render(
-            'Contract/Parties/Update',
+            'Contract/Parties/Form',
             array_merge(
                 $this->getProps($request),
                 ['contract' => $contract]

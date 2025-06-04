@@ -38,7 +38,7 @@ const EmployerForm = forwardRef(
         <header>
           <h2 className="text-lg font-medium">Particulier employeur</h2>
         </header>
-        <form className="mt-4 space-y-4">
+        <div className="mt-4 space-y-4">
           <div className="flex gap-2">
             <div className="w-full grid gap-2">
               <Label
@@ -118,7 +118,7 @@ const EmployerForm = forwardRef(
             />
             <FormError value={errors.phone_number} />
           </div>
-        </form>
+        </div>
       </section>
     );
   },

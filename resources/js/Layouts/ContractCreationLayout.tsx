@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { PageProps } from "@/types";
 import { PropsWithChildren, useRef } from "react";
 import { ThemeProvider } from "@/Components/ThemeToggle";
-import React from "react";
+import { SubmitContext } from "@/lib/submit-context";
 
 export default function Create({
   children,
@@ -15,15 +15,16 @@ export default function Create({
   stepCount: number;
   prevStep?: string;
 }) {
-  const submitContext = React.createContext({});
-
   const user = usePage<PageProps>().props.auth.user;
 
-  const step = useRef<any>(null);
+  const formRef = useRef();
 
   const submit = (): void => {
-    if (step.current) {
-      step.current.submit();
+    console.log("test");
+    console.log(formRef);
+
+    if (formRef.current) {
+      formRef.current.requestSubmit();
     }
   };
 
@@ -32,7 +33,7 @@ export default function Create({
       <Head title="Créer un nouveau contrat" />
 
       <div className="flex min-h-screen flex-col items-center bg-background pt-6 sm:justify-center sm:pt-0">
-        <submitContext.Provider value={{ step }}>
+        <SubmitContext.Provider value={{ formRef }}>
           <h1 className="text-3xl leading-tight text-foreground">
             Créer un nouveau contrat{" "}
             <span className="text-lg">
@@ -56,7 +57,7 @@ export default function Create({
               <Button onClick={submit}>Suivant</Button>
             </div>
           </div>
-        </submitContext.Provider>
+        </SubmitContext.Provider>
       </div>
     </ThemeProvider>
   );

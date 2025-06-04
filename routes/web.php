@@ -44,10 +44,12 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/contracts/create/parties', [ContractPartiesController::class, 'create'])
         ->name('contracts.parties.create');
+
     Route::post('/contracts/create/parties', [ContractPartiesController::class, 'store'])
         ->name('contracts.parties.store');
-    Route::get('/contracts/{id}/update/parties', [ContractPartiesController::class, 'update'])
-        ->name('contracts.parties.update');
+
+    Route::get('/contracts/{id}/edit/parties', [ContractPartiesController::class, 'edit'])
+        ->name('contracts.parties.edit');
 
     Route::get('/contracts/create/start-and-place', [ContractPartiesController::class, 'create'])
         ->name('contracts.start-and-place.create');
