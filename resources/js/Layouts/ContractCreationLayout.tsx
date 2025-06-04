@@ -17,7 +17,7 @@ export default function Create({
 }) {
   const user = usePage<PageProps>().props.auth.user;
 
-  const formRef = useRef();
+  const formRef = useRef<HTMLFormElement>(null);
 
   const submit = (): void => {
     console.log("test");

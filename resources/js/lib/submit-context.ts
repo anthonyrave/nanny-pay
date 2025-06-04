@@ -1,5 +1,9 @@
-import React from "react";
+import { createContext, RefObject } from "react";
 
-export const SubmitContext = React.createContext({
+type SubmitContextType = {
+  formRef: RefObject<HTMLFormElement> | null;
+};
+
+export const SubmitContext = createContext<SubmitContextType>({
   formRef: null,
 });
