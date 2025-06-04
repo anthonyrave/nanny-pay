@@ -19,6 +19,10 @@ export interface Contract {
   child_lastname: string;
 }
 
+export interface FormHandle {
+  submit: () => void;
+}
+
 export type PageProps<
   T extends Record<string, unknown> = Record<string, unknown>,
 > = T & {
